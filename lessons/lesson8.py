@@ -17,6 +17,7 @@ def create_table(conn,sql):
     try:
         cursor = conn.cursor()
         cursor.execute(sql)
+        cursor.close()
     except Error:
         print(Error)
 
@@ -43,6 +44,14 @@ def reed(conn):
     except Error:
         print(Error)
 
+    def delete(conn):
+        sql = '''DELETE FROM student WHERE age < 18'''
+        try:
+            cursor = conn.cursor()
+            cursor.execute(sql)
+            cursor.close()
+        except Error:
+            print(Error)
 
 def update_name_age(conn,id,name,age):
     sql='''UPDATE student SET full_name=?,age=? WHERE id=?'''
